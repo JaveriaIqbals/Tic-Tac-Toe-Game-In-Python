@@ -41,10 +41,12 @@ bu9=ttk.Button(root,text=' ')
 bu9.grid(row=2,column=2,sticky='snew',ipadx=40,ipady=40)
 bu9.config(command=lambda: ButtonClick(9))
 
-playerturn=ttk.Label(root,text="   Player 1 turn!  ")
+name1 = input('Enter the name for Player 1!')
+playerturn=ttk.Label(root,text=name1 + "    turn!  ")
 playerturn.grid(row=3,column=0,sticky='snew',ipadx=40,ipady=40)
 
-playerdetails=ttk.Label(root,text="    Player 1 is X\n\n    Player 2 is O")
+name2 = input('Enter the name for Player 2!')
+playerdetails=ttk.Label(root,text=name1 + "     is X\n\n" + name2 + "    is O")
 playerdetails.grid(row=3,column=2,sticky='snew',ipadx=40,ipady=40)
 
 res=ttk.Button(root,text='Restart')
@@ -59,7 +61,7 @@ def restartbutton():
     a=1
     b=0
     c=0
-    playerturn['text']="   Player 1 turn!   "
+    playerturn['text']=name1 + "    turn!   "
     bu1['text']=' '
     bu2['text']=' '
     bu3['text']=' '
@@ -182,7 +184,7 @@ def ButtonClick(id):
         bu3['text']=='X' and bu5['text']=='X' and bu7['text']=='X'):
             disableButton()
             c=1
-            tkinter.messagebox.showinfo("Tic Tac Toe","Winner is player 1")
+            tkinter.messagebox.showinfo("Tic Tac Toe","Winner is " + name1)
     elif( bu1['text']=='O' and bu2['text']=='O' and bu3['text']=='O' or
         bu4['text']=='O' and bu5['text']=='O' and bu6['text']=='O' or
         bu7['text']=='O' and bu8['text']=='O' and bu9['text']=='O' or
@@ -193,16 +195,16 @@ def ButtonClick(id):
         bu3['text']=='O' and bu5['text']=='O' and bu7['text']=='O'):
             disableButton()
             c=1
-            tkinter.messagebox.showinfo("Tic Tac Toe","Winner is player 2")
+            tkinter.messagebox.showinfo("Tic Tac Toe","Winner is  " + name2)
     elif b==9:
             disableButton()
             c=1
             tkinter.messagebox.showinfo("Tic Tac Toe","Match is Draw.")
 
     if a==1 and c==0:
-        playerturn['text']="   Player 1 turn!   "
+        playerturn['text']=name1 + "    turn!   "
     elif a==0 and c==0:
-        playerturn['text']="   Player 2 turn!   "
+        playerturn['text']=name2 + "    turn!   "
             
 root.mainloop()
 
